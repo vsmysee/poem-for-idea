@@ -1,1 +1,1 @@
-rootProject.name = "poem-for-idea"
+rootProject.name = "Poem For IDEA"
