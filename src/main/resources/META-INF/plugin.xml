@@ -1,19 +1,14 @@
 <idea-plugin>
     <id>com.github.vsmysee.poemforidea</id>
-    <name>poem-for-idea</name>
-    <vendor>vsmysee</vendor>
+    <name>Poem For Idea</name>
+    <vendor>codecode.fun</vendor>
 
-    <!-- Product and plugin compatibility requirements -->
-    <!-- https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html -->
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <applicationService serviceImplementation="com.github.vsmysee.poemforidea.services.MyApplicationService"/>
-        <projectService serviceImplementation="com.github.vsmysee.poemforidea.services.MyProjectService"/>
+
+        <toolWindow id="ChinesePoem" anchor="right" icon="/poem.png"
+                    factoryClass="com.github.vsmysee.poemforidea.PoemToolWindowFactory"/>
     </extensions>
 
-    <applicationListeners>
-        <listener class="com.github.vsmysee.poemforidea.listeners.MyProjectManagerListener"
-                  topic="com.intellij.openapi.project.ProjectManagerListener"/>
-    </applicationListeners>
 </idea-plugin>
