@@ -6,9 +6,7 @@
     <depends>com.intellij.modules.platform</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-
-        <toolWindow id="ChinesePoem" anchor="right" icon="/poem.png"
-                    factoryClass="com.github.vsmysee.poemforidea.PoemToolWindowFactory"/>
+        <toolWindow id="ChinesePoem" anchor="right" factoryClass="com.github.vsmysee.poemforidea.PoemToolWindowFactory"/>
     </extensions>
 
 </idea-plugin>

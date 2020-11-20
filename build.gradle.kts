@@ -3,7 +3,7 @@ import org.jetbrains.changelog.markdownToHTML
 
 plugins {
     id("java")
-    id("org.jetbrains.intellij") version "0.6.3"
+    id("org.jetbrains.intellij") version "0.6.4"
     id("org.jetbrains.changelog") version "0.6.2"
 
 }
