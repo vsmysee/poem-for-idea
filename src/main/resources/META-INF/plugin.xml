@@ -9,4 +9,14 @@
         <toolWindow id="ChinesePoem" anchor="right" factoryClass="com.github.vsmysee.poemforidea.PoemToolWindowFactory"/>
     </extensions>
 
+    <actions>
+
+        <action id="POEM_BACK" class="com.github.vsmysee.poemforidea.BackAction" icon="AllIcons.Actions.Back">
+            <keyboard-shortcut first-keystroke="alt F7" keymap="$default"/>
+        </action>
+        <action id="POEM_FORWARD" class="com.github.vsmysee.poemforidea.ForwardAction" icon="AllIcons.Actions.Forward">
+            <keyboard-shortcut first-keystroke="alt F7" keymap="$default"/>
+        </action>
+    </actions>
+
 </idea-plugin>
