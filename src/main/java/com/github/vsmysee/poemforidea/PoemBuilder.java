@@ -18,8 +18,11 @@ public class PoemBuilder {
 
         JPanel title = new JPanel();
 
-        JLabel comp = buildJLabel(poems.get(1), titleSize);
-        comp.setText("<html><font color='blue'>" + comp.getText() + "</font></html>");
+        String text = poems.get(1);
+        int endIndex = text.indexOf("《");
+        String author = text.substring(0, endIndex);
+        JLabel comp = buildJLabel(text, titleSize);
+        comp.setText("<html><font color=rgb(72,72,72)>" + author + "</font><font color='blue'>" + text.substring(endIndex) + "</font></html>");
 
         horizontalBox.add(title);
 

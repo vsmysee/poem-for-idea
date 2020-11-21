@@ -34,7 +34,12 @@ public class PoemToolWindowFactory implements ToolWindowFactory {
 
         final DefaultActionGroup toolbarActions = createToolbarActions();
         final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("PoemToolBar", toolbarActions, true);
-        content.add(toolbar.getComponent(),BorderLayout.NORTH);
+        JComponent tool = toolbar.getComponent();
+
+        JPanel toolPanel = new JPanel();
+        toolPanel.add(tool);
+
+        content.add(toolPanel,BorderLayout.NORTH);
 
         toolWindow.getContentManager().addContent(ContentFactory.SERVICE.getInstance().createContent(content, "", false));
     }
@@ -77,7 +82,7 @@ public class PoemToolWindowFactory implements ToolWindowFactory {
     public static String random() {
 
         Random rand = new Random();
-        int index = 0 + rand.nextInt((db.size() - 1 - 0) + 1);
+        int index = 0 + rand.nextInt(db.size());
         String poem = db.get(index);
 
         return poem;
