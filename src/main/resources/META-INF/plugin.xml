@@ -11,10 +11,10 @@
 
     <actions>
 
-        <action id="POEM_BACK" class="com.github.vsmysee.poemforidea.BackAction" icon="AllIcons.Actions.Back">
+        <action id="POEM_BACK" class="com.github.vsmysee.poemforidea.BackAction" icon="/icons/prev.png">
             <keyboard-shortcut first-keystroke="alt F7" keymap="$default"/>
         </action>
-        <action id="POEM_FORWARD" class="com.github.vsmysee.poemforidea.ForwardAction" icon="AllIcons.Actions.Forward">
+        <action id="POEM_FORWARD" class="com.github.vsmysee.poemforidea.ForwardAction" icon="/icons/next.png">
             <keyboard-shortcut first-keystroke="alt F7" keymap="$default"/>
         </action>
     </actions>
