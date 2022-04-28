@@ -1,4 +1,4 @@
-package com.github.vsmysee.poemforidea;
+package com.intellij.ide.actions.poem;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -24,7 +24,7 @@ public class ForwardAction extends AnAction {
 
         List<String> poems = Arrays.asList(random.split(";"));
 
-        holder.add(PoemBuilder.build(poems).getPoem());
+        holder.add(PoemBuilder.build(poems,false));
         holder.updateUI();
 
     }

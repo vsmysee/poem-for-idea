@@ -1,4 +1,4 @@
-package com.github.vsmysee.poemforidea;
+package com.intellij.ide.actions.poem;
 
 public class Setting {
 

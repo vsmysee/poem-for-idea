@@ -1,4 +1,4 @@
-package com.github.vsmysee.poemforidea;
+package com.intellij.ide.actions.poem;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -11,10 +11,14 @@ import java.util.Stack;
 
 public class BackAction extends AnAction {
 
-    private static Stack<String> stack = new Stack<>();
+    private static Stack<String> stack = new Stack<String>();
 
     public static void add(String poem) {
         stack.push(poem);
+    }
+
+    public static String pop() {
+        return stack.pop();
     }
 
     @Override
@@ -33,7 +37,7 @@ public class BackAction extends AnAction {
 
         List<String> poems = Arrays.asList(item.split(";"));
 
-        holder.add(PoemBuilder.build(poems).getPoem());
+        holder.add(PoemBuilder.build(poems,false));
         holder.updateUI();
     }
 }
