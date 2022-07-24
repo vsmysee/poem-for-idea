@@ -24,9 +24,9 @@ public class BackAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
 
-        JPanel holder = PoemToolWindowFactory.holder;
+        JPanel holder = ToolWindow.holder;
         holder.remove(0);
-        String item = PoemToolWindowFactory.random();
+        String item = ToolWindow.random();
         try {
             item = stack.pop();
             if (item.equals(ForwardAction.current)) {

@@ -27,4 +27,5 @@ public class CirclePanel extends JPanel {
                 RenderingHints.VALUE_ANTIALIAS_ON);
         g.fillRoundRect(0, 0, getWidth(), getHeight(), 5, 5);
     }
+
 }

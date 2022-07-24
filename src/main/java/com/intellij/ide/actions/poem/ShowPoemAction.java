@@ -7,7 +7,7 @@ public class ShowPoemAction extends AnAction {
 
   @Override
   public void actionPerformed(AnActionEvent e) {
-    String random = PoemToolWindowFactory.random();
+    String random = ToolWindow.random();
     ZoomDialog.getInstance(random);
   }
 

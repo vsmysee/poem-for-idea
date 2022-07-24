@@ -4,7 +4,6 @@ import com.intellij.openapi.actionSystem.ActionManager;
 import com.intellij.openapi.actionSystem.ActionToolbar;
 import com.intellij.openapi.actionSystem.DefaultActionGroup;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.wm.ToolWindow;
 import com.intellij.openapi.wm.ToolWindowFactory;
 import com.intellij.ui.content.ContentFactory;
 import org.jetbrains.annotations.NotNull;
@@ -21,14 +20,14 @@ import java.util.List;
 import java.util.Random;
 
 
-public class PoemToolWindowFactory implements ToolWindowFactory {
+public class ToolWindow implements ToolWindowFactory {
 
   private static List<String> db = new ArrayList<String>();
 
   public static JPanel holder;
 
   @Override
-  public void createToolWindowContent(@NotNull Project project, @NotNull ToolWindow toolWindow) {
+  public void createToolWindowContent(@NotNull Project project, @NotNull com.intellij.openapi.wm.ToolWindow toolWindow) {
 
     JPanel content = new JPanel(new BorderLayout());
     Box component = buildBox();
@@ -104,7 +103,7 @@ public class PoemToolWindowFactory implements ToolWindowFactory {
     InputStream is = null;
     BufferedReader reader = null;
     try {
-      is = PoemToolWindowFactory.class.getResourceAsStream("/icons/data.txt");
+      is = ToolWindow.class.getResourceAsStream("/icons/data.txt");
       reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
       String line;
       while ((line = reader.readLine()) != null) {

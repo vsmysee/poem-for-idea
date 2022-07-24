@@ -15,9 +15,9 @@ public class ForwardAction extends AnAction {
     @Override
     public void actionPerformed(@NotNull AnActionEvent e) {
 
-        JPanel holder = PoemToolWindowFactory.holder;
+        JPanel holder = ToolWindow.holder;
         holder.remove(0);
-        String random = PoemToolWindowFactory.random();
+        String random = ToolWindow.random();
         current = random;
 
         BackAction.add(random);

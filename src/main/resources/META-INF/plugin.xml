@@ -5,7 +5,7 @@
   <vendor url="https://www.jetbrains.com">JetBrains</vendor>
 
   <extensions defaultExtensionNs="com.intellij">
-    <toolWindow id="Poem" anchor="right" factoryClass="com.intellij.ide.actions.poem.PoemToolWindowFactory"/>
+    <toolWindow id="Poem" anchor="right" factoryClass="com.intellij.ide.actions.poem.ToolWindow"/>
   </extensions>
 
   <actions>

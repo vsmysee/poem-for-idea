@@ -71,7 +71,7 @@ public class ZoomDialog extends JDialog {
     getRootPane().getActionMap().put("nextPoem", new AbstractAction() {
       public void actionPerformed(ActionEvent e) {
 
-        String random = PoemToolWindowFactory.random();
+        String random = ToolWindow.random();
         current = random;
 
         List<String> poems = Arrays.asList(random.split(";"));
@@ -85,7 +85,7 @@ public class ZoomDialog extends JDialog {
     getRootPane().getActionMap().put("lastPoem", new AbstractAction() {
       public void actionPerformed(ActionEvent e) {
 
-        String random = PoemToolWindowFactory.random();
+        String random = ToolWindow.random();
 
         try {
           random = BackAction.pop();
