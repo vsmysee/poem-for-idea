@@ -10,122 +10,88 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
+import static com.intellij.ide.actions.poem.Setting.*;
+
 
 public class ToolWindow implements ToolWindowFactory {
 
-  private static List<String> db = new ArrayList<String>();
+    private static List<String> db = new ArrayList<String>();
 
-  public static JPanel holder;
+    public static JPanel holder;
 
-  @Override
-  public void createToolWindowContent(@NotNull Project project, @NotNull com.intellij.openapi.wm.ToolWindow toolWindow) {
+    @Override
+    public void createToolWindowContent(@NotNull Project project, @NotNull com.intellij.openapi.wm.ToolWindow toolWindow) {
 
-    JPanel content = new JPanel(new BorderLayout());
-    Box component = buildBox();
-    content.add(component);
+        JPanel content = new JPanel(new BorderLayout());
+        Box component = buildBox();
+        content.add(component);
 
-    final DefaultActionGroup toolbarActions = createToolbarActions();
-    final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("PoemToolBar", toolbarActions, true);
-    JComponent tool = toolbar.getComponent();
+        final DefaultActionGroup toolbarActions = createToolbarActions();
+        final ActionToolbar toolbar = ActionManager.getInstance().createActionToolbar("PoemToolBar", toolbarActions, true);
+        JComponent tool = toolbar.getComponent();
 
-    JPanel toolPanel = new JPanel();
-    toolPanel.add(tool);
+        JPanel toolPanel = new JPanel();
+        toolPanel.add(tool);
 
-    content.add(toolPanel, BorderLayout.NORTH);
+        content.add(toolPanel, BorderLayout.NORTH);
 
-    toolWindow.getContentManager().addContent(ContentFactory.SERVICE.getInstance().createContent(content, "", false));
-  }
-
-  private static final String ACTION_GOTO_BACK = "POEM_BACK";
-  private static final String ACTION_GOTO_FORWARD = "POEM_FORWARD";
-
-
-  private DefaultActionGroup createToolbarActions() {
-    final ActionManager actionManager = ActionManager.getInstance();
-    final DefaultActionGroup group = new DefaultActionGroup();
-    group.add(actionManager.getAction(ACTION_GOTO_BACK));
-    group.add(actionManager.getAction(ACTION_GOTO_FORWARD));
-    return group;
-  }
-
-  private static Box buildBox() {
-
-    if (db.size() == 0) {
-      init();
-    }
-
-    // show short poem
-    List<String> poems = Arrays.asList(random().split(";"));
-    while (poems.size() > 12) {
-      poems = Arrays.asList(random().split(";"));
+        toolWindow.getContentManager().addContent(ContentFactory.SERVICE.getInstance().createContent(content, "", false));
     }
 
 
-    Box content = Box.createVerticalBox();
-
-    content.add(Box.createGlue());
-
-    holder = new JPanel();
-    JComponent poem = PoemBuilder.build(poems, false);
-    holder.add(poem);
-    content.add(holder);
-
-    content.add(Box.createGlue());
-    return content;
-
-  }
-
-
-  public static String random() {
-
-    if (db.size() == 0) {
-      init();
+    private DefaultActionGroup createToolbarActions() {
+        final ActionManager actionManager = ActionManager.getInstance();
+        final DefaultActionGroup group = new DefaultActionGroup();
+        group.add(actionManager.getAction(ACTION_GOTO_BACK));
+        group.add(actionManager.getAction(ACTION_GOTO_FORWARD));
+        return group;
     }
 
-    Random rand = new Random();
-    int index = rand.nextInt(db.size());
-    String poem = db.get(index);
+    private static Box buildBox() {
 
-    return poem;
-  }
-
-
-  private static void init() {
-    InputStream is = null;
-    BufferedReader reader = null;
-    try {
-      is = ToolWindow.class.getResourceAsStream("/icons/data.txt");
-      reader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
-      String line;
-      while ((line = reader.readLine()) != null) {
-        db.add(line);
-      }
-    }
-    catch (IOException e) {
-      e.printStackTrace();
-    }
-    finally {
-      try {
-        if (is != null) {
-          is.close();
+        if (db.size() == 0) {
+            db.addAll(PoemLoader.init());
         }
-        if (reader != null) {
-          reader.close();
+
+        // show short poem
+        List<String> poems = Arrays.asList(random().split(";"));
+        while (poems.size() > 12) {
+            poems = Arrays.asList(random().split(";"));
         }
-      }
-      catch (IOException e) {
-        e.printStackTrace();
-      }
+
+
+        Box content = Box.createVerticalBox();
+
+        content.add(Box.createGlue());
+
+        holder = new JPanel();
+        JComponent poem = PoemBuilder.build(poems, false);
+        holder.add(poem);
+        content.add(holder);
+
+        content.add(Box.createGlue());
+        return content;
+
     }
-  }
+
+
+    public static String random() {
+
+        if (db.size() == 0) {
+            db.addAll(PoemLoader.init());
+        }
+
+        Random rand = new Random();
+        int index = rand.nextInt(db.size());
+        String poem = db.get(index);
+
+        return poem;
+    }
+
 
 }
