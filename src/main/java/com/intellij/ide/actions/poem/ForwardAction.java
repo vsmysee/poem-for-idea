@@ -17,14 +17,14 @@ public class ForwardAction extends AnAction {
 
         JPanel holder = ToolWindow.holder;
         holder.remove(0);
-        String random = ToolWindow.random();
+        String random = PoemDB.random();
         current = random;
 
         BackAction.add(random);
 
         List<String> poems = Arrays.asList(random.split(";"));
 
-        holder.add(PoemBuilder.build(poems,false));
+        holder.add(PoemBuilder.build(poems, false));
         holder.updateUI();
 
     }

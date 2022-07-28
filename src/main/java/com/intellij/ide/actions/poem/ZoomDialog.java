@@ -13,9 +13,9 @@ public class ZoomDialog extends JDialog {
 
     private static ZoomDialog instance;
 
-    public static ZoomDialog getInstance(String random) {
+    public static ZoomDialog getInstance() {
         if (instance == null) {
-            instance = new ZoomDialog(random);
+            instance = new ZoomDialog(PoemDB.random());
         }
         return instance;
     }
@@ -25,7 +25,7 @@ public class ZoomDialog extends JDialog {
 
         current = random;
 
-        List<String> poems = Arrays.asList(random.split(";"));
+        List<String> poems = Arrays.asList(current.split(";"));
 
         setDefaultCloseOperation(2);
 
@@ -71,13 +71,12 @@ public class ZoomDialog extends JDialog {
         getRootPane().getActionMap().put("nextPoem", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
 
-                String random = ToolWindow.random();
-                current = random;
+                current = PoemDB.random();
 
-                List<String> poems = Arrays.asList(random.split(";"));
+                List<String> poems = Arrays.asList(current.split(";"));
                 refresh(poems);
 
-                BackAction.add(random);
+                BackAction.add(current);
 
             }
         });
@@ -85,7 +84,7 @@ public class ZoomDialog extends JDialog {
         getRootPane().getActionMap().put("lastPoem", new AbstractAction() {
             public void actionPerformed(ActionEvent e) {
 
-                String random = ToolWindow.random();
+                String random = PoemDB.random();
 
                 try {
                     random = BackAction.pop();

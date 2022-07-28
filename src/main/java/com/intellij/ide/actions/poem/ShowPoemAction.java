@@ -4,11 +4,9 @@ import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 
 public class ShowPoemAction extends AnAction {
-
-  @Override
-  public void actionPerformed(AnActionEvent e) {
-    String random = ToolWindow.random();
-    ZoomDialog.getInstance(random);
-  }
+    @Override
+    public void actionPerformed(AnActionEvent e) {
+        ZoomDialog.getInstance();
+    }
 
 }

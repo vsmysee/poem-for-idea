@@ -10,17 +10,14 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
-import static com.intellij.ide.actions.poem.Setting.*;
+import static com.intellij.ide.actions.poem.Setting.ACTION_GOTO_BACK;
+import static com.intellij.ide.actions.poem.Setting.ACTION_GOTO_FORWARD;
 
 
 public class ToolWindow implements ToolWindowFactory {
-
-    private static List<String> db = new ArrayList<String>();
 
     public static JPanel holder;
 
@@ -41,6 +38,7 @@ public class ToolWindow implements ToolWindowFactory {
         content.add(toolPanel, BorderLayout.NORTH);
 
         toolWindow.getContentManager().addContent(ContentFactory.SERVICE.getInstance().createContent(content, "", false));
+
     }
 
 
@@ -54,14 +52,9 @@ public class ToolWindow implements ToolWindowFactory {
 
     private static Box buildBox() {
 
-        if (db.size() == 0) {
-            db.addAll(PoemLoader.init());
-        }
-
-        // show short poem
-        List<String> poems = Arrays.asList(random().split(";"));
+        List<String> poems = Arrays.asList(PoemDB.random().split(";"));
         while (poems.size() > 12) {
-            poems = Arrays.asList(random().split(";"));
+            poems = Arrays.asList(PoemDB.random().split(";"));
         }
 
 
@@ -77,20 +70,6 @@ public class ToolWindow implements ToolWindowFactory {
         content.add(Box.createGlue());
         return content;
 
-    }
-
-
-    public static String random() {
-
-        if (db.size() == 0) {
-            db.addAll(PoemLoader.init());
-        }
-
-        Random rand = new Random();
-        int index = rand.nextInt(db.size());
-        String poem = db.get(index);
-
-        return poem;
     }
 
 

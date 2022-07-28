@@ -26,7 +26,8 @@ public class BackAction extends AnAction {
 
         JPanel holder = ToolWindow.holder;
         holder.remove(0);
-        String item = ToolWindow.random();
+        String item = PoemDB.random();
+
         try {
             item = stack.pop();
             if (item.equals(ForwardAction.current)) {
@@ -37,7 +38,10 @@ public class BackAction extends AnAction {
 
         List<String> poems = Arrays.asList(item.split(";"));
 
-        holder.add(PoemBuilder.build(poems,false));
+        holder.add(PoemBuilder.build(poems, false));
         holder.updateUI();
+
     }
+
+
 }
